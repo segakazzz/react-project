@@ -1,0 +1,5 @@
+export const NOT_STARTED = 'NOT_STARTED'
+export const PLAYING = 'PLAYING'
+export const LIGHT_WON = 'LIGHT_WON'
+export const DARK_WON = 'DARK_WON'
+export const DRAW = 'DRAW'
