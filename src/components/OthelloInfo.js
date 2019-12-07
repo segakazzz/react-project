@@ -5,12 +5,13 @@ import './css/main.css'
 import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from './styleType'
 import { connect } from 'react-redux'
 import { DARK } from '../reducers/player'
+import { NOT_STARTED, PLAYING } from '../reducers/statusTypes'
 
 const style = {
   navbar: {
     position: 'absolute',
     top: 0,
-    width: '100%',
+    width: '100vw',
     backgroundColor: DARK_PINK,
     height: NAVBAR_HEIGHT_PX
   },
@@ -35,6 +36,7 @@ const OthelloInfo = props => {
     { ...style.playerSign },
     { backgroundColor: playerColor }
   )
+  const isCompleted = props.status !== NOT_STARTED && props.status !== PLAYING
   return (
     <Navbar style={style.navbar}>
       <Navbar.Brand
@@ -45,19 +47,21 @@ const OthelloInfo = props => {
         Classic Othello
       </Navbar.Brand>
       <Navbar.Toggle />
-      <Navbar.Collapse className='justify-content-end'>
-        <Navbar.Text className='navbar-text' style={style.navbarText}>
-          Current Player
-        </Navbar.Text>
-        <div style={playerSign} />
-      </Navbar.Collapse>
+      {!isCompleted && (
+        <Navbar.Collapse className='justify-content-end'>
+          <Navbar.Text className='navbar-text' style={style.navbarText}>
+            Current Player
+          </Navbar.Text>
+          <div style={playerSign} />
+        </Navbar.Collapse>
+      )}
     </Navbar>
   )
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { player } = state.othelloGame
-  return { player: player }
+  const { player, status } = state.othelloGame
+  return { player: player, status: status }
 }
 
 //   const mapDispatchToProps = dispatch => {

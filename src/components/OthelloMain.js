@@ -4,34 +4,33 @@ import OthelloBoard from './OthelloBoard'
 import OthelloInfo from './OthelloInfo'
 import { gameAreaResize } from '../actions/actionCreators'
 import { connect } from 'react-redux'
-
+import OthelloModal from './OthelloModal'
 
 const style = {
   main: {
     backgroundColor: LIGHT_PINK,
     minHeight: '100vh',
+    width: '100vw',
     position: 'relative'
   }
 }
 
 class OthelloMain extends React.Component {
-
   componentDidMount () {
     window.addEventListener('resize', () => {
       // console.log('resizing...', window.innerWidth, window.innerHeight)
-      this.props.gameAreaResize(
-        window.innerWidth,
-        window.innerHeight
-      )
+      this.props.gameAreaResize(window.innerWidth, window.innerHeight)
       // console.log(window.innerWidth, window.innerHeight)
     })
   }
 
   render () {
+    const { isCompleted } = this.props
     return (
       <div style={style.main}>
         <OthelloInfo />
         <OthelloBoard />
+        {isCompleted && <OthelloModal />}
       </div>
     )
   }
@@ -43,7 +42,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+const mapStateToProps = (state, ownProps) => {
+  const { isCompleted } = state.othelloGame
+  return { isCompleted: isCompleted }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(OthelloMain)

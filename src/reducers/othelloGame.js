@@ -4,6 +4,7 @@ import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING} from './statusTypes'
 
 const initialState = {
   status: NOT_STARTED,
+  isCompleted: false,
   positions: [
     { row: 3, col: 3, color: LIGHT },
     { row: 3, col: 4, color: DARK },

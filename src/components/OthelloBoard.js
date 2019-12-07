@@ -10,12 +10,12 @@ const style = {
   },
   grid: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   main: {
     position: 'absolute',
     top: NAVBAR_HEIGHT_PX,
-    width: '100%',
+    width: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
