@@ -111,17 +111,19 @@ const updatePositions = (row, col, player, positions) => {
   updateDiagonalRight2Left(row, col, player, positions)
 }
 
-const getNewStatus = (positions) => {
+const updateStatus = (state) => {
+  const {positions} = state
   const darkCount = positions.filter(obj=> obj.color === DARK).length
   const lightCount = positions.filter(obj=> obj.color === LIGHT).length
   if (positions.length === 64 ||  darkCount === 0 || lightCount === 0){
-    if (darkCount > lightCount) return DARK_WON
-    else if (lightCount > darkCount) return LIGHT_WON
-    else return DRAW
+    if (darkCount > lightCount) state.status = DARK_WON
+    else if (lightCount > darkCount) state.status = LIGHT_WON
+    else state.status = DRAW
   } 
-  else if (positions.length === 4) return NOT_STARTED
-  else if (positions.length > 4 && positions.length < 64) return PLAYING
+  else if (positions.length === 4) state.status = NOT_STARTED
+  else if (positions.length > 4 && positions.length < 64) state.status = PLAYING
   else throw Error('Unable to get status...')
+  state.isCompleted = state.status !== NOT_STARTED && state.status !== PLAYING 
 }
 
 export default (state = initialState, action) => {
@@ -137,7 +139,7 @@ export default (state = initialState, action) => {
         newState.positions.push({ row: row, col: col, color: newState.player })
         updatePositions(row, col, newState.player, newState.positions)
         newState.player = !newState.player
-        newState.status = getNewStatus(newState.positions)
+        updateStatus(newState)
       } else {
         // console.log('not allowed', row, col)
       }      

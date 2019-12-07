@@ -36,7 +36,6 @@ const OthelloInfo = props => {
     { ...style.playerSign },
     { backgroundColor: playerColor }
   )
-  const isCompleted = props.status !== NOT_STARTED && props.status !== PLAYING
   return (
     <Navbar style={style.navbar}>
       <Navbar.Brand
@@ -47,7 +46,7 @@ const OthelloInfo = props => {
         Classic Othello
       </Navbar.Brand>
       <Navbar.Toggle />
-      {!isCompleted && (
+      {!props.isCompleted && (
         <Navbar.Collapse className='justify-content-end'>
           <Navbar.Text className='navbar-text' style={style.navbarText}>
             Current Player
@@ -60,8 +59,8 @@ const OthelloInfo = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { player, status } = state.othelloGame
-  return { player: player, status: status }
+  const { player, status, isCompleted } = state.othelloGame
+  return { player: player, status: status, isCompleted : isCompleted }
 }
 
 //   const mapDispatchToProps = dispatch => {
