@@ -1,0 +1,1 @@
+export const PUT_A_PIECE = 'PUT_A_PIECE'

@@ -9,6 +9,11 @@ const style = {
   },
   grid: {
     border: '2px black solid'
+  },
+  main: {
+    position: 'absolute',
+    top: '65px',
+    width: '100%'
   }
 }
 
@@ -27,9 +32,11 @@ const OthelloGridCol = props => (
 )
 
 export default () => (
-  <Container style={style.grid}>
-    {[...Array(8).keys()].map((rownum, idx) => (
-      <OthelloGridRow key={idx} row={rownum} />
-    ))}
-  </Container>
+  <div style={style.main}>
+    <Container style={style.grid}>
+      {[...Array(8).keys()].map((rownum, idx) => (
+        <OthelloGridRow key={idx} row={rownum} />
+      ))}
+    </Container>
+  </div>
 )

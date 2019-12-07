@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { DARK_GREEN } from './color'
 import OthelloDisc from './OthelloDisc'
+import { putPiece } from '../actions/actionCreators'
+import './css/main.css'
 
 const style = {
   cell: {
@@ -16,7 +18,7 @@ const style = {
 }
 
 const OthelloCell = props => (
-  <div style={style.cell} onClick={props.putPiece}>
+  <div className={'othello-cell'} style={style.cell} onClick={props.putPiece.bind(null, props.row, props.col)}>
     <OthelloDisc {...props} />
   </div>
 )
@@ -33,7 +35,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    putPiece: () => dispatch({ type: 'PUT_A_PIECE' })
+    putPiece: (row, col) => dispatch(putPiece(row, col))
   }
 }
 

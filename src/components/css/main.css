@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Cutive+Mono|Faster+One&display=swap');
+
+.navbar-title{
+    font-family: 'Faster One', cursive;
+    font-size: 1.5rem;
+}
+
+.navbar-text{
+    font-family: 'Cutive Mono', cursive;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.othello-cell{
+    font-family: 'Cutive Mono', cursive;
+    font-size: 1rem;
+}
