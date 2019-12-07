@@ -1,42 +1,67 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Row, Col } from 'react-bootstrap'
 import OthelloCell from './OthelloCell'
+import {NAVBAR_HEIGHT_PX} from './styleType'
+import { connect } from 'react-redux'
 
 const style = {
   col: {
     padding: 0
   },
   grid: {
-    border: '2px black solid'
+    display: 'flex',
+    flexDirection: 'column'
   },
   main: {
     position: 'absolute',
-    top: '65px',
-    width: '100%'
+    top: NAVBAR_HEIGHT_PX,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 }
 
 const OthelloGridRow = props => (
-  <Row>
+  <div style={style.row}>
     {[...Array(8).keys()].map((colnum, idx) => (
       <OthelloGridCol key={idx} col={colnum} {...props} />
     ))}
-  </Row>
+  </div>
 )
 
 const OthelloGridCol = props => (
-  <Col style={style.col}>
+  <div style={style.col}>
     <OthelloCell {...props} />
-  </Col>
-)
-
-export default () => (
-  <div style={style.main}>
-    <Container style={style.grid}>
-      {[...Array(8).keys()].map((rownum, idx) => (
-        <OthelloGridRow key={idx} row={rownum} />
-      ))}
-    </Container>
   </div>
 )
+
+const OthelloBoard = (props) => {
+  // console.log({width: props.areaWidth, height: props.areaHeight})
+  const styleMain = Object.assign({...style.main}, {width: props.areaWidth, height: props.areaHeight})
+  return (
+    <div style={styleMain}>
+      <div style={style.grid}>
+        {[...Array(8).keys()].map((rownum, idx) => (
+          <OthelloGridRow key={idx} row={rownum} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const mapStateToProps = (state, ownProps) => {
+  const { player } = state.othelloGame
+  const { gameAreaWidth, gameAreaHeight } = state.othelloStyle
+  // console.log({ gameAreaWidth, gameAreaHeight })
+  return { player: player, areaWidth: gameAreaWidth, areaHeight: gameAreaHeight }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(OthelloBoard)

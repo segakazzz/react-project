@@ -1,9 +1,10 @@
 import React from 'react'
-import { LIGHT_PINK } from './color'
+import { LIGHT_PINK } from './styleType'
 import OthelloBoard from './OthelloBoard'
 import OthelloInfo from './OthelloInfo'
-import { screenResize } from '../actions/actionCreators'
+import { gameAreaResize } from '../actions/actionCreators'
 import { connect } from 'react-redux'
+
 
 const style = {
   main: {
@@ -14,15 +15,15 @@ const style = {
 }
 
 class OthelloMain extends React.Component {
-  constructor (props) {
-    super(props)
-    // console.log(props)
-  }
 
   componentDidMount () {
     window.addEventListener('resize', () => {
-      // console.log('resizing...')
-      this.props.screenResize(window.innerWidth, window.innerHeight)
+      // console.log('resizing...', window.innerWidth, window.innerHeight)
+      this.props.gameAreaResize(
+        window.innerWidth,
+        window.innerHeight
+      )
+      // console.log(window.innerWidth, window.innerHeight)
     })
   }
 
@@ -38,7 +39,7 @@ class OthelloMain extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    screenResize: (width, height) => dispatch(screenResize(width, height))
+    gameAreaResize: (width, height) => dispatch(gameAreaResize(width, height))
   }
 }
 

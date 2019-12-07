@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar } from 'react-bootstrap'
 import './css/main.css'
-import { LIGHT_GREEN, DARK_PINK } from './color'
+import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from './styleType'
 import { connect } from 'react-redux'
 import { DARK } from '../reducers/player'
 
@@ -11,7 +11,8 @@ const style = {
     position: 'absolute',
     top: 0,
     width: '100%',
-    backgroundColor: DARK_PINK
+    backgroundColor: DARK_PINK,
+    height: NAVBAR_HEIGHT_PX
   },
   navbarTitle: {
     color: LIGHT_GREEN

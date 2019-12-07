@@ -8,7 +8,7 @@ export const putPiece = (row, col) => {
   }
 }
 
-export const screenResize = (width, height) => {
+export const gameAreaResize = (width, height) => {
   return {
     type: SCREEN_RESIZE,
     screenWidth: width,

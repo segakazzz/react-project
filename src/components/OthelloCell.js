@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { DARK_GREEN } from './color'
+import { DARK_GREEN } from './styleType'
 import OthelloDisc from './OthelloDisc'
 import { putPiece } from '../actions/actionCreators'
 import './css/main.css'
@@ -8,29 +8,35 @@ import './css/main.css'
 const style = {
   cell: {
     backgroundColor: DARK_GREEN,
-    width: '100%',
     border: '1px black solid',
-    height: '80px', // temporary fix
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
   }
 }
 
-const OthelloCell = props => (
-  <div className={'othello-cell'} style={style.cell} onClick={props.putPiece.bind(null, props.row, props.col)}>
-    <OthelloDisc {...props} />
-  </div>
-)
+const OthelloCell = props => {
+  const styleCell = Object.assign({...style.cell}, {width: props.cellSize, height: props.cellSize})
+  return (
+    <div
+      className={'othello-cell'}
+      style={styleCell}
+      onClick={props.putPiece.bind(null, props.row, props.col)}
+    >
+      <OthelloDisc {...props} />
+    </div>
+  )
+}
 
 const mapStateToProps = (state, ownProps) => {
   const { positions } = state.othelloGame
+  const { cellSize } = state.othelloStyle
   const { col, row } = ownProps
   const match = positions.find((obj, idx) => {
     return obj.row === row && obj.col === col
   })
   const color = match ? match.color : null
-  return { color: color }
+  return { color: color, cellSize: cellSize }
 }
 
 const mapDispatchToProps = dispatch => {

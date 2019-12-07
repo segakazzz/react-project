@@ -8,7 +8,8 @@ const style = {
     borderRadius: '50%',
     display: 'none',
     textAlign: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontSize: '0.5rem'
   }
 }
 
