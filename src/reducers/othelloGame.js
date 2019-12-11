@@ -1,21 +1,25 @@
 import { DARK, LIGHT } from './player'
-import { PUT_A_PIECE } from '../actions/actionTypes'
+import { PUT_A_PIECE, CLOSE_MODAL, START_GAME } from '../actions/actionTypes'
 import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING} from './statusTypes'
 
 const initialState = {
   status: NOT_STARTED,
   isCompleted: false,
+  showModal: false, 
   positions: [
     { row: 3, col: 3, color: LIGHT },
     { row: 3, col: 4, color: DARK },
     { row: 4, col: 3, color: DARK },
     { row: 4, col: 4, color: LIGHT }
   ],
-  player: DARK
+  player: DARK,
+  darkCount: 2,
+  lightCount: 2  
 }
 
 const BreakException = {}
-const isAllowed = (row, col, positions) => {
+const isAllowed = (row, col, positions, isCompleted) => {
+  if (isCompleted) return false
   let isAllowed = false
   try {
     // Check if duplicated
@@ -124,6 +128,9 @@ const updateStatus = (state) => {
   else if (positions.length > 4 && positions.length < 64) state.status = PLAYING
   else throw Error('Unable to get status...')
   state.isCompleted = state.status !== NOT_STARTED && state.status !== PLAYING 
+  state.showModal = state.isCompleted
+  state.darkCount = darkCount
+  state.lightCount = lightCount
 }
 
 export default (state = initialState, action) => {
@@ -134,7 +141,7 @@ export default (state = initialState, action) => {
     case PUT_A_PIECE:
       const { row, col } = action
       // check if the position is allowed
-      if (isAllowed(row, col, newState.positions)) {
+      if (isAllowed(row, col, newState.positions, newState.isCompleted)) {
         // console.log('allowed', row, col)
         newState.positions.push({ row: row, col: col, color: newState.player })
         updatePositions(row, col, newState.player, newState.positions)
@@ -143,6 +150,14 @@ export default (state = initialState, action) => {
       } else {
         // console.log('not allowed', row, col)
       }      
+      break
+    
+    case CLOSE_MODAL:
+      newState.showModal = false
+      break
+
+    case START_GAME:
+      newState.status = PLAYING
       break
     default:
       break

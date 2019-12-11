@@ -5,7 +5,6 @@ import './css/main.css'
 import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from './styleType'
 import { connect } from 'react-redux'
 import { DARK } from '../reducers/player'
-import { NOT_STARTED, PLAYING } from '../reducers/statusTypes'
 
 const style = {
   navbar: {
