@@ -4,7 +4,6 @@ import { Navbar } from 'react-bootstrap'
 import './css/main.css'
 import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from './styleType'
 import { connect } from 'react-redux'
-import { DARK } from '../reducers/player'
 import Player from './Player'
 
 const style = {

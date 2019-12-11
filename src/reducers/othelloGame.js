@@ -51,6 +51,11 @@ const isAllowed = (row, col, positions, isCompleted) => {
 }
 
 const updateHorizonal = (row, col, player, positions) => {
+  const newHolizonalPositions = positions.filter(
+    obj => obj.col === col 
+  )
+  console.log('newposition', newHolizonalPositions)
+
   const holizonalPositions = positions.filter(
     obj => obj.col === col && obj.color === player
   )

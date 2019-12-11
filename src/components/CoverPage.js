@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { startGame } from '../actions/actionCreators'
 import './css/main.css'
-import { NORMAL_GREEN, LIGHT_PINK, DARK_GREEN } from './styleType'
+import { NORMAL_GREEN, LIGHT_PINK } from './styleType'
 
 const styles = {
   main: {
