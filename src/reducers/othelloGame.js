@@ -50,38 +50,63 @@ const isAllowed = (row, col, positions, isCompleted) => {
   return isAllowed
 }
 
+const getPrevTarget = (array, baseIndex, player) => {
+  for(let i = baseIndex-1; i >= 0; i--){
+    if (array[i] === null) 
+      return Number.NEGATIVE_INFINITY
+    else if (array[i] === player)
+      return i
+    else 
+      continue
+  }
+  return Number.NEGATIVE_INFINITY
+}
+
+const getNextTarget = (array, baseIndex, player) => {
+  for(let i = baseIndex + 1; i < 8; i++){
+    if (array[i] === null) 
+      return Number.POSITIVE_INFINITY
+    else if (array[i] === player)
+      return i
+    else 
+      continue
+  }
+  return Number.POSITIVE_INFINITY
+}
+
 const updateHorizonal = (row, col, player, positions) => {
   const newHolizonalPositions = positions.filter(
     obj => obj.col === col 
-  )
-  console.log('newposition', newHolizonalPositions)
-
-  const holizonalPositions = positions.filter(
-    obj => obj.col === col && obj.color === player
-  )
-  const rowArray = holizonalPositions.map(obj => obj.row)
-  const prevRow = Math.max(...rowArray.filter(val => val < row))
-  const nextRow = Math.min(...rowArray.filter(val => val > row))
+  )  
+  const arr = [...Array(8).keys()].map(idx => {
+    const foundObj = newHolizonalPositions.find(obj => obj.row === idx)
+    return foundObj !== undefined ? foundObj.color : null
+  })
+  const prevTarget = getPrevTarget(arr, row, player)
+  const nextTarget = getNextTarget(arr, row, player)
   positions.map(obj => {
     if (obj.col === col && obj.color !== player) {
-      if (isFinite(prevRow) && prevRow < obj.row && obj.row < row) { obj.color = player }
-      if (isFinite(nextRow) && row < obj.row && obj.row < nextRow) { obj.color = player }
+      if (isFinite(prevTarget) && prevTarget < obj.row && obj.row < row) { obj.color = player }
+      if (isFinite(nextTarget) && row < obj.row && obj.row < nextTarget) { obj.color = player }
     }
     return obj
   })
 }
 
 const updateVertical = (row, col, player, positions) => {
-  const verticalPositions = positions.filter(
-    obj => obj.row === row && obj.color === player
-  )
-  const colArray = verticalPositions.map(obj => obj.col)
-  const prevCol = Math.max(...colArray.filter(val => val < col))
-  const nextCol = Math.min(...colArray.filter(val => val > col))
+  const newVerticalPositions = positions.filter(
+    obj => obj.row === row 
+  )  
+  const arr = [...Array(8).keys()].map(idx => {
+    const foundObj = newVerticalPositions.find(obj => obj.col === idx)
+    return foundObj !== undefined ? foundObj.color : null
+  })
+  const prevTarget = getPrevTarget(arr, col, player)
+  const nextTarget = getNextTarget(arr, col, player)
   positions.map(obj => {
     if (obj.row === row && obj.color !== player) {
-      if (isFinite(prevCol) && prevCol < obj.col && obj.col < col) { obj.color = player }
-      if (isFinite(nextCol) && col < obj.col && obj.col < nextCol) { obj.color = player }
+      if (isFinite(prevTarget) && prevTarget < obj.col && obj.col < col) { obj.color = player }
+      if (isFinite(nextTarget) && col < obj.col && obj.col < nextTarget) { obj.color = player }
     }
     return obj
   })
@@ -144,10 +169,13 @@ const updateStatus = (state) => {
   state.lightCount = lightCount
 }
 
+
+const deepCopy = obj => JSON.parse(JSON.stringify(obj))
+
 export default (state = initialState, action) => {
   const { type } = action
   // console.log(action)
-  const newState = { ...state }
+  const newState = deepCopy(state)
   switch (type) {
     case PUT_A_PIECE:
       const { row, col } = action
@@ -172,9 +200,9 @@ export default (state = initialState, action) => {
       break
 
     case PLAY_AGAIN:
-      console.log(initialState)
+      // console.log(initialState)
       const resetStatus = {...initialState, status: PLAYING, positions: getInitialPositions()}
-      console.log(resetStatus)
+      // console.log(resetStatus)
       return resetStatus
 
     default:
