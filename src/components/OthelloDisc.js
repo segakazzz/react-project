@@ -32,7 +32,7 @@ const OthelloDisc = props => {
   }
   return (
     <div style={discStyle} onClick={props.putPiece}>
-      Row: {props.row} Col: {props.col}
+      {/* Row: {props.row} Col: {props.col} */}
     </div>
   )
 }

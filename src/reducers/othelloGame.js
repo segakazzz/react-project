@@ -1,17 +1,23 @@
 import { DARK, LIGHT } from './player'
-import { PUT_A_PIECE, CLOSE_MODAL, START_GAME } from '../actions/actionTypes'
+import { PUT_A_PIECE, CLOSE_MODAL, START_GAME, PLAY_AGAIN } from '../actions/actionTypes'
 import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING} from './statusTypes'
+
+
+const getInitialPositions = () => {
+  const initialPositions = [
+    { row: 3, col: 3, color: LIGHT },
+    { row: 3, col: 4, color: DARK },
+    { row: 4, col: 3, color: DARK },
+    { row: 4, col: 4, color: LIGHT }
+  ]
+  return JSON.parse(JSON.stringify(initialPositions))
+}
 
 const initialState = {
   status: NOT_STARTED,
   isCompleted: false,
   showModal: false, 
-  positions: [
-    { row: 3, col: 3, color: LIGHT },
-    { row: 3, col: 4, color: DARK },
-    { row: 4, col: 3, color: DARK },
-    { row: 4, col: 4, color: LIGHT }
-  ],
+  positions: getInitialPositions(),
   player: DARK,
   darkCount: 2,
   lightCount: 2  
@@ -159,6 +165,13 @@ export default (state = initialState, action) => {
     case START_GAME:
       newState.status = PLAYING
       break
+
+    case PLAY_AGAIN:
+      console.log(initialState)
+      const resetStatus = {...initialState, status: PLAYING, positions: getInitialPositions()}
+      console.log(resetStatus)
+      return resetStatus
+
     default:
       break
   }

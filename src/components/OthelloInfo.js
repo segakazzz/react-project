@@ -5,6 +5,7 @@ import './css/main.css'
 import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from './styleType'
 import { connect } from 'react-redux'
 import { DARK } from '../reducers/player'
+import Player from './Player'
 
 const style = {
   navbar: {
@@ -30,11 +31,6 @@ const style = {
 }
 
 const OthelloInfo = props => {
-  const playerColor = props.player === DARK ? 'black' : 'white'
-  const playerSign = Object.assign(
-    { ...style.playerSign },
-    { backgroundColor: playerColor }
-  )
   return (
     <Navbar style={style.navbar}>
       <Navbar.Brand
@@ -42,7 +38,7 @@ const OthelloInfo = props => {
         href='#home'
         style={style.navbarTitle}
       >
-        Classic Othello
+        Othello Game
       </Navbar.Brand>
       <Navbar.Toggle />
       {!props.isCompleted && (
@@ -50,7 +46,7 @@ const OthelloInfo = props => {
           <Navbar.Text className='navbar-text' style={style.navbarText}>
             Current Player
           </Navbar.Text>
-          <div style={playerSign} />
+          <Player size={30} player={props.player}/>
         </Navbar.Collapse>
       )}
     </Navbar>

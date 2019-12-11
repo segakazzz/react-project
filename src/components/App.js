@@ -4,9 +4,7 @@ import CoverPage from './CoverPage'
 import { connect } from 'react-redux'
 import { NOT_STARTED } from '../reducers/statusTypes'
 
-function App (props) {
-  console.log(props.status)
-
+const App = (props) => {
   return props.status === NOT_STARTED ? (
     <CoverPage /> 
   ) : (

@@ -3,9 +3,40 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { startGame } from '../actions/actionCreators'
+import './css/main.css'
+import { NORMAL_GREEN, LIGHT_PINK, DARK_GREEN } from './styleType'
 
-const CoverPage = (props) => <Button onClick={props.startGame}>Start!</Button>
+const styles = {
+  main: {
+    backgroundColor: NORMAL_GREEN,
+    minHeight: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column'
+  },
+  title: {
+    color: LIGHT_PINK
+  }
+}
 
+const CoverPage = props => {
+  return (
+    <div style={styles.main}>
+      <div style={styles.title} className={'cover-title'}>
+        Othello Game
+      </div>
+      <Button
+        variant='outline-secondary'
+        className={'cover-button'}
+        size='lg'
+        onClick={props.startGame}
+      >
+        Click HERE to start Game!
+      </Button>
+    </div>
+  )
+}
 const mapDispatchToProps = dispatch => {
   return {
     startGame: () => dispatch(startGame())

@@ -1,4 +1,4 @@
-import { PUT_A_PIECE, SCREEN_RESIZE, CLOSE_MODAL, START_GAME } from './actionTypes'
+import { PUT_A_PIECE, SCREEN_RESIZE, CLOSE_MODAL, START_GAME, PLAY_AGAIN } from './actionTypes'
 
 export const putPiece = (row, col) => {
   return {
@@ -25,5 +25,11 @@ export const closeModal = () => {
 export const startGame = () => {
   return {
     type : START_GAME
+  }
+}
+
+export const playAgain = () => {
+  return {
+    type : PLAY_AGAIN
   }
 }

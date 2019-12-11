@@ -1,17 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Cutive+Mono|Faster+One&display=swap');
 
-.navbar-title{
+.navbar-title {
     font-family: 'Faster One', cursive;
     font-size: 1.5rem;
 }
 
-.navbar-text{
+.navbar-text {
     font-family: 'Cutive Mono', cursive;
     font-size: 0.9rem;
     font-weight: bold;
 }
 
-.othello-cell{
+.othello-cell {
     font-family: 'Cutive Mono', cursive;
+    font-size: 1rem;
+}
+
+.cover-title {
+    font-family: 'Faster One', cursive;
+    font-size: 4rem;
+}
+
+.cover-button {
+    font-family: 'Cutive Mono', cursive;
+    font-size: 1rem;
+}
+
+.modal {
+    font-family: 'Cutive Mono', cursive;
+}
+
+.modal-title {
+    font-size: 2rem;
+}
+
+.modal-body {
+    font-size: 1rem;
+}
+
+.modal-footer {
     font-size: 1rem;
 }
