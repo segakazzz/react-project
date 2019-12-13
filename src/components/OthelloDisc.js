@@ -1,5 +1,6 @@
 import React from 'react'
 import { DARK, LIGHT } from '../reducers/player'
+import { LIGHT_PINK, LIGHT_GREEN} from './styleType'
 
 const style = {
   disc: {
@@ -30,9 +31,26 @@ const OthelloDisc = props => {
       discStyle.display = 'none'
       break
   }
+  switch (props.isFliped) {
+    case true:
+      discStyle.border = '2px solid' + LIGHT_PINK
+      break
+    default:
+      break
+  }
+
+  switch (props.isPlaced) {
+    case true:
+      discStyle.border = '2px solid' + LIGHT_GREEN
+      break
+    default:
+      break
+  }
   return (
     <div style={discStyle} onClick={props.putPiece}>
       Row: {props.row} Col: {props.col}
+      {/* isFliped: {props.isFliped ? 'Yes' : 'No'}  */}
+      {/* isPlaced: {props.isPlaced ? 'Yes' : 'No'} */}
     </div>
   )
 }
