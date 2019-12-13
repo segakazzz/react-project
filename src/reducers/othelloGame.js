@@ -51,6 +51,7 @@ const isAllowed = (row, col, positions, isCompleted) => {
 }
 
 const getPrevTarget = (array, baseIndex, player) => {
+  // console.log('baseIndex', baseIndex)
   for(let i = baseIndex-1; i >= 0; i--){
     if (array[i] === null) 
       return Number.NEGATIVE_INFINITY
@@ -63,7 +64,7 @@ const getPrevTarget = (array, baseIndex, player) => {
 }
 
 const getNextTarget = (array, baseIndex, player) => {
-  for(let i = baseIndex + 1; i < 8; i++){
+  for(let i = baseIndex + 1; i < array.length ; i++){
     if (array[i] === null) 
       return Number.POSITIVE_INFINITY
     else if (array[i] === player)
@@ -75,11 +76,11 @@ const getNextTarget = (array, baseIndex, player) => {
 }
 
 const updateHorizonal = (row, col, player, positions) => {
-  const newHolizonalPositions = positions.filter(
+  const horizonalPositions = positions.filter(
     obj => obj.col === col 
   )  
   const arr = [...Array(8).keys()].map(idx => {
-    const foundObj = newHolizonalPositions.find(obj => obj.row === idx)
+    const foundObj = horizonalPositions.find(obj => obj.row === idx)
     return foundObj !== undefined ? foundObj.color : null
   })
   const prevTarget = getPrevTarget(arr, row, player)
@@ -94,11 +95,11 @@ const updateHorizonal = (row, col, player, positions) => {
 }
 
 const updateVertical = (row, col, player, positions) => {
-  const newVerticalPositions = positions.filter(
+  const verticalPositions = positions.filter(
     obj => obj.row === row 
   )  
   const arr = [...Array(8).keys()].map(idx => {
-    const foundObj = newVerticalPositions.find(obj => obj.col === idx)
+    const foundObj = verticalPositions.find(obj => obj.col === idx)
     return foundObj !== undefined ? foundObj.color : null
   })
   const prevTarget = getPrevTarget(arr, col, player)
@@ -112,33 +113,65 @@ const updateVertical = (row, col, player, positions) => {
   })
 }
 
-const updateDiagonalLeft2Right = (row, col, player, positions) => {
+const updateDiagonalTopLeft2BottomRight = (row, col, player, positions) => {
   const diagonalPositions = positions.filter(obj => {
-    return obj.row - obj.col === row - col && obj.color === player
+    return obj.row - obj.col === row - col
   })
-  const sumArray = diagonalPositions.map(obj => obj.row)
-  const prevRow = Math.max(...sumArray.filter(val => val < row))
-  const nextRow = Math.min(...sumArray.filter(val => val > row))
+  const arraySize = 8 - Math.abs(row - col)
+  const baseIndex = row < col ? row : col
+
+  const arr = [...Array(arraySize).keys()].map(idx => {
+    const foundObj = diagonalPositions.find(obj => {
+      if (obj.row < obj.col) return obj.row === idx
+      else return obj.col === idx
+    })
+    return foundObj !== undefined ? foundObj.color : null
+  })
+  // console.log('updateDiagonalTopLeft2BottomRight', arr)
+  // console.log('arraySize', arraySize, 'baseIndex', baseIndex)
+
+  const prevTarget = getPrevTarget(arr, baseIndex, player)
+  const nextTarget = getNextTarget(arr, baseIndex, player)
+  // console.log(prevTarget, nextTarget)
   positions.map(obj => {
     if (obj.row - obj.col === row - col && obj.color !== player) {
-      if (isFinite(prevRow) && prevRow < obj.row && obj.row < row) { obj.color = player }
-      if (isFinite(nextRow) && row < obj.row && obj.row < nextRow) { obj.color = player }
+      const base = obj.row < obj.col ? obj.row : obj.col
+      // console.log(obj, base)
+      if (isFinite(prevTarget) && prevTarget < base && base < baseIndex) { obj.color = player }
+      if (isFinite(nextTarget) && baseIndex < base && base < nextTarget) { obj.color = player }
     }
     return obj
   })
 }
 
-const updateDiagonalRight2Left = (row, col, player, positions) => {
+const updateDiagonalBottomLeft2TopRight = (row, col, player, positions) => {
   const diagonalPositions = positions.filter(obj => {
-    return obj.row + obj.col === row + col && obj.color === player
+    return obj.row + obj.col === row + col 
   })
-  const sumArray = diagonalPositions.map(obj => obj.row)
-  const prevRow = Math.max(...sumArray.filter(val => val < row))
-  const nextRow = Math.min(...sumArray.filter(val => val > row))
+  // console.log(diagonalPositions)
+  const arraySize = (row + col <= 7) ? row + col + 1 : 15 - (row + col)
+  const baseIndex = row + col <= 7 ? col : col - (8 - arraySize)
+
+  const arr = [...Array(arraySize).keys()].map(idx => {
+    const foundObj = diagonalPositions.find(obj => {
+      if (obj.row + obj.col <= 7) return obj.col === idx
+      else return obj.col === idx + (8 - arraySize)
+    })
+    return foundObj !== undefined ? foundObj.color : null
+  })
+
+  // console.log('updateDiagonalBottomLeft2TopRight', arr)
+  // console.log('arraySize', arraySize, 'baseIndex', baseIndex)
+  const prevTarget = getPrevTarget(arr, baseIndex, player)
+  const nextTarget = getNextTarget(arr, baseIndex, player)
+  // console.log(prevTarget, nextTarget)
   positions.map(obj => {
     if (obj.row + obj.col === row + col && obj.color !== player) {
-      if (isFinite(prevRow) && prevRow < obj.row && obj.row < row) { obj.color = player }
-      if (isFinite(nextRow) && row < obj.row && obj.row < nextRow) { obj.color = player }
+      // console.log(obj)
+      const base = obj.row + obj.col <= 7 ? obj.col : obj.col - (8 - arraySize)
+      // console.log(base)
+      if (isFinite(prevTarget) && prevTarget < base && base < baseIndex) { obj.color = player }
+      if (isFinite(nextTarget) && baseIndex < base && base< nextTarget) { obj.color = player }
     }
     return obj
   })
@@ -147,8 +180,8 @@ const updateDiagonalRight2Left = (row, col, player, positions) => {
 const updatePositions = (row, col, player, positions) => {
   updateHorizonal(row, col, player, positions)
   updateVertical(row, col, player, positions)
-  updateDiagonalLeft2Right(row, col, player, positions)
-  updateDiagonalRight2Left(row, col, player, positions)
+  updateDiagonalTopLeft2BottomRight(row, col, player, positions)
+  updateDiagonalBottomLeft2TopRight(row, col, player, positions)
 }
 
 const updateStatus = (state) => {
