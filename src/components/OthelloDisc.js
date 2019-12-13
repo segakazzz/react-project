@@ -31,7 +31,7 @@ const OthelloDisc = props => {
       discStyle.display = 'none'
       break
   }
-  switch (props.isFliped) {
+  switch (props.isFlipped) {
     case true:
       discStyle.border = '2px solid' + LIGHT_PINK
       break
@@ -49,7 +49,7 @@ const OthelloDisc = props => {
   return (
     <div style={discStyle} onClick={props.putPiece}>
       Row: {props.row} Col: {props.col}
-      {/* isFliped: {props.isFliped ? 'Yes' : 'No'}  */}
+      {/* isFlipped: {props.isFlipped ? 'Yes' : 'No'}  */}
       {/* isPlaced: {props.isPlaced ? 'Yes' : 'No'} */}
     </div>
   )

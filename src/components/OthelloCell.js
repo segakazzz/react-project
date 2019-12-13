@@ -36,9 +36,9 @@ const mapStateToProps = (state, ownProps) => {
     return obj.row === row && obj.col === col
   })
   const color = match ? match.color : null
-  const isFliped = match ? match.isFliped : null
+  const isFlipped = match ? match.isFlipped : null
   const isPlaced = match ? match.isPlaced : null
-  return { color: color, cellSize: cellSize, isFliped: isFliped, isPlaced: isPlaced }
+  return { color: color, cellSize: cellSize, isFlipped: isFlipped, isPlaced: isPlaced }
 }
 
 const mapDispatchToProps = dispatch => {

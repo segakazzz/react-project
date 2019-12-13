@@ -9,10 +9,10 @@ import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING } from './statusTypes'
 
 const getInitialPositions = () => {
   const initialPositions = [
-    { row: 3, col: 3, color: LIGHT, isFliped: false, isPlaced: false },
-    { row: 3, col: 4, color: DARK, isFliped: false, isPlaced: false },
-    { row: 4, col: 3, color: DARK, isFliped: false, isPlaced: false },
-    { row: 4, col: 4, color: LIGHT, isFliped: false, isPlaced: false }
+    { row: 3, col: 3, color: LIGHT, isFlipped: false, isPlaced: false },
+    { row: 3, col: 4, color: DARK, isFlipped: false, isPlaced: false },
+    { row: 4, col: 3, color: DARK, isFlipped: false, isPlaced: false },
+    { row: 4, col: 4, color: LIGHT, isFlipped: false, isPlaced: false }
   ]
   return JSON.parse(JSON.stringify(initialPositions))
 }
@@ -85,11 +85,11 @@ const updateHorizonal = (row, col, player, positions) => {
     if (obj.col === col && obj.color !== player) {
       if (isFinite(prevTarget) && prevTarget < obj.row && obj.row < row) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
       if (isFinite(nextTarget) && row < obj.row && obj.row < nextTarget) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
     }
     return obj
@@ -108,11 +108,11 @@ const updateVertical = (row, col, player, positions) => {
     if (obj.row === row && obj.color !== player) {
       if (isFinite(prevTarget) && prevTarget < obj.col && obj.col < col) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
       if (isFinite(nextTarget) && col < obj.col && obj.col < nextTarget) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
     }
     return obj
@@ -145,11 +145,11 @@ const updateDiagonalTopLeft2BottomRight = (row, col, player, positions) => {
       // console.log(obj, base)
       if (isFinite(prevTarget) && prevTarget < base && base < baseIndex) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
       if (isFinite(nextTarget) && baseIndex < base && base < nextTarget) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
     }
     return obj
@@ -184,11 +184,11 @@ const updateDiagonalBottomLeft2TopRight = (row, col, player, positions) => {
       // console.log(base)
       if (isFinite(prevTarget) && prevTarget < base && base < baseIndex) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
       if (isFinite(nextTarget) && baseIndex < base && base < nextTarget) {
         obj.color = player
-        obj.isFliped = true
+        obj.isFlipped = true
       }
     }
     return obj
@@ -228,11 +228,11 @@ export default (state = initialState, action) => {
   switch (type) {
     case PUT_A_PIECE:
       const { row, col } = action
-      newState.positions = newState.positions.map(obj => ({...obj, isPlaced: false, isFliped: false}))
+      newState.positions = newState.positions.map(obj => ({...obj, isPlaced: false, isFlipped: false}))
       // check if the position is allowed
       if (isAllowed(row, col, newState.positions, newState.isCompleted)) {
         // console.log('allowed', row, col)
-        newState.positions.push({ row: row, col: col, color: newState.player, isPlaced: true, isFliped: false })
+        newState.positions.push({ row: row, col: col, color: newState.player, isPlaced: true, isFlipped: false })
         updatePositions(row, col, newState.player, newState.positions)
         newState.player = !newState.player
         updateStatus(newState)
