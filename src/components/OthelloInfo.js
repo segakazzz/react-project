@@ -19,13 +19,6 @@ const style = {
   },
   navbarText: {
     color: LIGHT_GREEN
-  },
-  playerSign: {
-    marginLeft: '10px',
-    borderRadius: '50%',
-    // backgroundColor: 'white',
-    width: '20px',
-    height: '20px'
   }
 }
 
@@ -43,7 +36,7 @@ const OthelloInfo = props => {
       {!props.isCompleted && (
         <Navbar.Collapse className='justify-content-end'>
           <Navbar.Text className='navbar-text' style={style.navbarText}>
-            Current Player
+            Player
           </Navbar.Text>
           <Player size={30} player={props.player}/>
         </Navbar.Collapse>
