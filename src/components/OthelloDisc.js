@@ -1,39 +1,14 @@
 import React from 'react'
 import { DARK, LIGHT } from '../reducers/player'
 import { LIGHT_PINK, LIGHT_GREEN} from './styleType'
-
-const style = {
-  disc: {
-    width: '90%',
-    height: '90%',
-    borderRadius: '50%',
-    display: 'none',
-    textAlign: 'center',
-    alignItems: 'center',
-    fontSize: '0.5rem'
-  }
-}
+import './css/disc.css'
+import className from 'classnames'
 
 const OthelloDisc = props => {
-  let discStyle = { ...style.disc }
-  switch (props.color) {
-    case DARK:
-      discStyle.display = 'flex'
-      discStyle.backgroundColor = 'black'
-      discStyle.color = 'white'
-      break
-    case LIGHT:
-      discStyle.display = 'flex'
-      discStyle.backgroundColor = 'white'
-      discStyle.color = 'black'
-      break
-    default:
-      discStyle.display = 'none'
-      break
-  }
+  let style = {}
   switch (props.isFlipped) {
     case true:
-      discStyle.border = '2px solid' + LIGHT_PINK
+      style.border = '2px solid' + LIGHT_PINK
       break
     default:
       break
@@ -41,16 +16,27 @@ const OthelloDisc = props => {
 
   switch (props.isPlaced) {
     case true:
-      discStyle.border = '2px solid' + LIGHT_GREEN
+      style.border = '2px solid' + LIGHT_GREEN
       break
     default:
       break
   }
+  console.log(className('discStyle'))
+  let classes = ''
+  switch (props.color) {
+    case DARK:
+      classes = className('discStyle', 'black', 'show')
+    break;
+    case LIGHT:
+      classes = className('discStyle', 'white', 'show')
+      break;
+    default:
+      classes = className('discStyle', 'hidden')
+  }
+  
   return (
-    <div style={discStyle} onClick={props.putPiece}>
-      Row: {props.row} Col: {props.col}
-      {/* isFlipped: {props.isFlipped ? 'Yes' : 'No'}  */}
-      {/* isPlaced: {props.isPlaced ? 'Yes' : 'No'} */}
+    <div style={style} className={classes} onClick={props.putPiece}>
+      {/* Row: {props.row} Col: {props.col} */}
     </div>
   )
 }

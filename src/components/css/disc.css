@@ -1,0 +1,36 @@
+.discStyle {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    display: flex;
+    text-align: center;
+    align-Items: center;
+    font-size: 0.5rem;
+    display: flex;
+    opacity: 0;
+}
+
+.discStyle.white{
+    background-color: white;
+    color: black
+}
+
+.discStyle.black{
+    background-color: black;
+    color: white
+}
+
+.discStyle.show{
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -o-transition: 1s;
+    transition: 1s;
+}
+
+.discStyle.hidden{
+    visibility: hidden;
+}
+
+
