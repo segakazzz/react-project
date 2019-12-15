@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar } from 'react-bootstrap'
-import './css/main.css'
+import '../scss/main.scss'
 import { LIGHT_GREEN, DARK_PINK, NAVBAR_HEIGHT_PX } from '../constants'
 import { connect } from 'react-redux'
 import Player from './Player'

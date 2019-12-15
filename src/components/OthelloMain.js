@@ -5,7 +5,7 @@ import OthelloInfo from './OthelloInfo'
 import { gameAreaResize } from '../ducks/othelloStyle'
 import { connect } from 'react-redux'
 import OthelloModal from './OthelloModal'
-import './css/main.css'
+import '../scss/main.scss'
 import className from 'classnames'
 
 const style = {

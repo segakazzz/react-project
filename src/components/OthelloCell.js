@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { DARK_GREEN } from '../constants'
 import OthelloDisc from './OthelloDisc'
 import { putPiece } from '../ducks/othelloGame'
-import './css/main.css'
+import '../scss/main.scss'
 
 const style = {
   cell: {

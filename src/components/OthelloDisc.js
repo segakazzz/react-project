@@ -1,7 +1,7 @@
 import React from 'react'
 import { DARK, LIGHT } from '../constants'
 import { LIGHT_PINK, LIGHT_GREEN} from '../constants'
-import './css/disc.css'
+import '../scss/disc.scss'
 import className from 'classnames'
 
 const OthelloDisc = props => {
