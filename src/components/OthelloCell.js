@@ -1,26 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { DARK_GREEN } from '../constants'
 import OthelloDisc from './OthelloDisc'
 import { putPiece } from '../ducks/othelloGame'
 import '../scss/main.scss'
 
-const style = {
-  cell: {
-    backgroundColor: DARK_GREEN,
-    border: '1px black solid',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-}
-
 const OthelloCell = props => {
-  const styleCell = Object.assign({...style.cell}, {width: props.cellSize, height: props.cellSize})
+  const styleCell = Object.assign({}, {width: props.cellSize, height: props.cellSize})
   return (
     <div
-      className={'othello-cell'}
-      style={styleCell}
+      style={styleCell} className={'othello-cell'}
       onClick={props.putPiece.bind(null, props.row, props.col)}
     >
       <OthelloDisc {...props} />

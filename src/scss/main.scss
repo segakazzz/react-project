@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cabin+Sketch|Cutive+Mono|Faster+One&display=swap');
+@import 'colors';
 
 .navbar-title {
     font-family: 'Faster One', cursive;
@@ -14,6 +15,11 @@
 .othello-cell {
     font-family: 'Cutive Mono', cursive;
     font-size: 1rem;
+    background-color: $DARK_GREEN;
+    border: 1px black solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cover-main {
@@ -26,23 +32,23 @@
     -moz-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
-}
-
-.cover-main.show {
-    visibility: visible;
-    opacity: 1;
-    height: 100vh;
-}
-
-.cover-main.hidden {
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
+    background-color: $NORMAL_GREEN;
+    &.show {
+        visibility: visible;
+        opacity: 1;
+        height: 100vh;
+    }
+    &.hidden {
+        visibility: hidden;
+        opacity: 0;
+        height: 0;
+    }
 }
 
 .cover-title {
     font-family: 'Faster One', cursive;
     font-size: 4rem;
+    color: $LIGHT_PINK;
 }
 
 .cover-information{
@@ -77,6 +83,7 @@
     min-height: 100vh;
     width: 100vw;
     position: relative;
+    background-color: $LIGHT_PINK;
     /* opacity: 0;
     -webkit-transition: 2s;
     -moz-transition: 2s;
@@ -89,4 +96,3 @@
     visibility: visible;
     opacity: 1;
 }
-

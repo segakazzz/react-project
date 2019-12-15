@@ -1,5 +1,4 @@
 import React from 'react'
-import { LIGHT_PINK } from '../constants'
 import OthelloBoard from './OthelloBoard'
 import OthelloInfo from './OthelloInfo'
 import { gameAreaResize } from '../ducks/othelloStyle'
@@ -7,12 +6,6 @@ import { connect } from 'react-redux'
 import OthelloModal from './OthelloModal'
 import '../scss/main.scss'
 import className from 'classnames'
-
-const style = {
-  main: {
-    backgroundColor: LIGHT_PINK
-  }
-}
 
 class OthelloMain extends React.Component {
   componentDidMount () {
@@ -26,7 +19,7 @@ class OthelloMain extends React.Component {
   render () {
     const { isCompleted } = this.props
     return (
-      <div style={style.main} className={className('othello-main', 'show')}>
+      <div className={className('othello-main', 'show')}>
         <OthelloInfo />
         <OthelloBoard />
         {isCompleted && <OthelloModal />}
