@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Modal, Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { closeModal, playAgain } from '../actions/actionCreators'
-import { DARK_WON, LIGHT_WON } from '../reducers/statusTypes'
 import Player from './Player'
-import { DARK, LIGHT } from '../reducers/player'
+import { DARK, LIGHT } from '../constants'
+import { DARK_WON, LIGHT_WON } from '../constants'
 
 const styles = {
   score: {

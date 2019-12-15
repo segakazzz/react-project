@@ -1,5 +1,5 @@
 import { SCREEN_RESIZE } from '../actions/actionTypes'
-import { NAVBAR_HEIGHT_PX } from '../components/styleType'
+import { NAVBAR_HEIGHT_PX } from '../constants'
 
 const calcCellSize = (areaWidth, areaHeight) => {
   return Math.min(areaWidth, areaHeight) * 0.9 / 8

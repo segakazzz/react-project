@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import OthelloCell from './OthelloCell'
-import {NAVBAR_HEIGHT_PX} from './styleType'
+import { NAVBAR_HEIGHT_PX } from '../constants'
 import { connect } from 'react-redux'
 
 const style = {

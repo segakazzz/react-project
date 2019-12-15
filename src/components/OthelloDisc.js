@@ -1,6 +1,6 @@
 import React from 'react'
-import { DARK, LIGHT } from '../reducers/player'
-import { LIGHT_PINK, LIGHT_GREEN} from './styleType'
+import { DARK, LIGHT } from '../constants'
+import { LIGHT_PINK, LIGHT_GREEN} from '../constants'
 import './css/disc.css'
 import className from 'classnames'
 

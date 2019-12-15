@@ -1,11 +1,11 @@
-import { DARK, LIGHT } from './player'
+import { DARK, LIGHT } from '../constants'
 import {
   PUT_A_PIECE,
   CLOSE_MODAL,
   START_GAME,
   PLAY_AGAIN
 } from '../actions/actionTypes'
-import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING } from './statusTypes'
+import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING } from '../constants'
 
 const getInitialPositions = () => {
   const initialPositions = [

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { DARK_GREEN } from './styleType'
+import { DARK_GREEN } from '../constants'
 import OthelloDisc from './OthelloDisc'
 import { putPiece } from '../actions/actionCreators'
 import './css/main.css'

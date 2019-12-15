@@ -4,8 +4,8 @@ import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { startGame } from '../actions/actionCreators'
 import './css/main.css'
-import { NORMAL_GREEN, LIGHT_PINK } from './styleType'
-import { NOT_STARTED } from '../reducers/statusTypes'
+import { NORMAL_GREEN, LIGHT_PINK } from '../constants'
+import { NOT_STARTED } from '../constants'
 import classNames from 'classnames'
 
 const styles = {
@@ -32,6 +32,11 @@ const CoverPage = props => {
       >
         Click HERE to start Game!
       </Button>
+      <div className={'cover-information'}>
+        Created by 
+        <a href="https://segakazzz-portfolio.herokuapp.com/" 
+        target="_blank" rel="noopener noreferrer">Kazue Sega Sasatani</a>
+      </div>
     </div>
   )
 }

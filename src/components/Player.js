@@ -1,5 +1,5 @@
 import React from 'react'
-import { DARK, LIGHT } from '../reducers/player'
+import { DARK, LIGHT } from '../constants'
 const styles = {
   main: {
     border: '1px black solid',

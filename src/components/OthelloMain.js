@@ -1,5 +1,5 @@
 import React from 'react'
-import { LIGHT_PINK } from './styleType'
+import { LIGHT_PINK } from '../constants'
 import OthelloBoard from './OthelloBoard'
 import OthelloInfo from './OthelloInfo'
 import { gameAreaResize } from '../actions/actionCreators'
