@@ -1,0 +1,10 @@
+@import 'colors';
+
+.player-main{
+    border: 1px black solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}

@@ -1,0 +1,24 @@
+@import 'colors';
+
+.othello-board-col{
+    padding: 0;
+}
+
+.othello-board-grid{
+    display: flex;
+    flex-direction: column;
+}
+
+.othello-board-main {
+    position: absolute;
+    top: $NAVBAR_HEIGHT_PX;
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.othello-board-row {
+    display: flex;
+    flex-direction: row;
+}

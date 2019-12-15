@@ -22,47 +22,6 @@
     align-items: center;
 }
 
-.cover-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-    background-color: $NORMAL_GREEN;
-    &.show {
-        visibility: visible;
-        opacity: 1;
-        height: 100vh;
-    }
-    &.hidden {
-        visibility: hidden;
-        opacity: 0;
-        height: 0;
-    }
-}
-
-.cover-title {
-    font-family: 'Faster One', cursive;
-    font-size: 4rem;
-    color: $LIGHT_PINK;
-}
-
-.cover-information{
-    font-family: 'Cutive Mono', cursive;
-    font-size: 1.2rem;
-    text-align: center;
-    margin: 20px
-}
-
-.cover-button {
-    font-family: 'Cutive Mono', cursive;
-    font-size: 1rem;
-}
-
 .modal {
     font-family: 'Cutive Mono', cursive;
 }

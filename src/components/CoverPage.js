@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { startGame } from '../ducks/othelloGame'
-import '../scss/main.scss'
+import '../scss/cover.scss'
 import { NOT_STARTED } from '../constants'
 import classNames from 'classnames'
 
