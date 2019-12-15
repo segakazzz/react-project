@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { DARK_GREEN } from '../constants'
 import OthelloDisc from './OthelloDisc'
-import { putPiece } from '../actions/actionCreators'
+import { putPiece } from '../ducks/othelloGame'
 import './css/main.css'
 
 const style = {

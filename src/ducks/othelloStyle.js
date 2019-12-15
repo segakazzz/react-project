@@ -1,4 +1,3 @@
-import { SCREEN_RESIZE } from '../actions/actionTypes'
 import { NAVBAR_HEIGHT_PX } from '../constants'
 
 const calcCellSize = (areaWidth, areaHeight) => {
@@ -14,6 +13,16 @@ const initialState = {
   gameAreaWidth: initialAreaSize.width,
   gameAreaHeight: initialAreaSize.height,
   cellSize: calcCellSize(initialAreaSize.width, initialAreaSize.height)
+}
+
+export const SCREEN_RESIZE = 'SCREEN_RESIZE'
+
+export const gameAreaResize = (width, height) => {
+  return {
+    type: SCREEN_RESIZE,
+    screenWidth: width,
+    screenHeight: height
+  }
 }
 
 export default (state = initialState, action) => {

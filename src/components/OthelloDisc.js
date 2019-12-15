@@ -21,7 +21,7 @@ const OthelloDisc = props => {
     default:
       break
   }
-  console.log(className('discStyle'))
+  // console.log(className('discStyle'))
   let classes = ''
   switch (props.color) {
     case DARK:

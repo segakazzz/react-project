@@ -1,11 +1,10 @@
 import { DARK, LIGHT } from '../constants'
-import {
-  PUT_A_PIECE,
-  CLOSE_MODAL,
-  START_GAME,
-  PLAY_AGAIN
-} from '../actions/actionTypes'
 import { NOT_STARTED, LIGHT_WON, DARK_WON, DRAW, PLAYING } from '../constants'
+
+export const PUT_A_PIECE = 'PUT_A_PIECE'
+export const CLOSE_MODAL = 'CLOSE_MODAL'
+export const START_GAME = 'START_GAME'
+export const PLAY_AGAIN = 'PLAY_AGAIN'
 
 const getInitialPositions = () => {
   const initialPositions = [
@@ -219,7 +218,32 @@ const updateStatus = state => {
   state.lightCount = lightCount
 }
 
-// const deepCopy = obj => JSON.parse(JSON.stringify(obj))
+export const putPiece = (row, col) => {
+  return {
+    type: PUT_A_PIECE,
+    row: row,
+    col: col
+  }
+}
+
+export const closeModal = () => {
+  return {
+    type : CLOSE_MODAL
+  }
+}
+
+export const startGame = () => {
+  return {
+    type : START_GAME
+  }
+}
+
+export const playAgain = () => {
+  return {
+    type : PLAY_AGAIN
+  }
+}
+
 
 export default (state = initialState, action) => {
   const { type } = action
