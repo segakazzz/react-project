@@ -1,27 +1,9 @@
 import React from 'react'
 import { DARK, LIGHT } from '../constants'
-import { LIGHT_PINK, LIGHT_GREEN} from '../constants'
 import '../scss/disc.scss'
 import className from 'classnames'
 
 const OthelloDisc = props => {
-  let style = {}
-  switch (props.isFlipped) {
-    case true:
-      style.border = '2px solid' + LIGHT_PINK
-      break
-    default:
-      break
-  }
-
-  switch (props.isPlaced) {
-    case true:
-      style.border = '2px solid' + LIGHT_GREEN
-      break
-    default:
-      break
-  }
-  // console.log(className('discStyle'))
   let classes = ''
   switch (props.color) {
     case DARK:
@@ -33,9 +15,12 @@ const OthelloDisc = props => {
     default:
       classes = className('discStyle', 'hidden')
   }
-  
+
+  if(props.isFlipped) classes += ' flipped'
+  if(props.isPlaced) classes += ' placed'
+
   return (
-    <div style={style} className={classes} onClick={props.putPiece}>
+    <div className={classes} onClick={props.putPiece}>
       {/* Row: {props.row} Col: {props.col} */}
     </div>
   )

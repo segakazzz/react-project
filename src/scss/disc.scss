@@ -1,3 +1,4 @@
+@import 'colors';
 .discStyle {
     width: 90%;
     height: 90%;
@@ -8,29 +9,37 @@
     font-size: 0.5rem;
     display: flex;
     opacity: 0;
-}
 
-.discStyle.white{
-    background-color: white;
-    color: black
-}
+    &.white{
+        background-color: white;
+        color: black
+    }
 
-.discStyle.black{
-    background-color: black;
-    color: white
-}
+    &.black{
+        background-color: black;
+        color: white
+    }
 
-.discStyle.show{
-    opacity: 1;
-    visibility: visible;
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    -o-transition: 1s;
-    transition: 1s;
-}
+    &.show{
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -o-transition: 1s;
+        transition: 1s;
+    }
 
-.discStyle.hidden{
-    visibility: hidden;
-}
+    &.hidden{
+        visibility: hidden;
+    }
 
+    &.placed{
+        border: 2px solid $LIGHT_PINK;
+    }
+
+    &.flipped{
+        border: 2px solid $LIGHT_GREEN;
+    }
+
+}
 

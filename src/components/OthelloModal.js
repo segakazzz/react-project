@@ -6,22 +6,8 @@ import { closeModal, playAgain } from '../ducks/othelloGame'
 import Player from './Player'
 import { DARK, LIGHT } from '../constants'
 import { DARK_WON, LIGHT_WON } from '../constants'
+import '../scss/modal.scss'
 
-const styles = {
-  score: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  vs:{
-    fontSize: '2rem',
-    margin: '5px'
-  },
-  message: {
-    textAlign: 'center'
-  }
-}
 const OthelloModal = props => {
   console.log(props)
   const resultMessage = status => {
@@ -40,10 +26,10 @@ const OthelloModal = props => {
         <Modal.Title>Game Set!</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p style={styles.message}>{resultMessage(props.status)}</p>
-        <div style={styles.score}>
+        <p className={'message'}>{resultMessage(props.status)}</p>
+        <div className={'score'}>
           <Player size={60} player={LIGHT} text={props.lightCount}/>
-          <div style={styles.vs}> VS </div>
+          <div className={'vs'}> VS </div>
           <Player size={60} player={DARK} text={props.darkCount}/>
         </div>
       </Modal.Body>

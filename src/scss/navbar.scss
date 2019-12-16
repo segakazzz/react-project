@@ -1,0 +1,21 @@
+@import 'colors';
+
+.navbar{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    background-color: $DARK_PINK;
+    height: $NAVBAR_HEIGHT_PX;
+    .navbar-title{
+        color: $LIGHT_GREEN;
+        font-family: 'Faster One', cursive;
+        font-size: 1.5rem;
+
+    }
+    .navbar-text{
+        color: $LIGHT_GREEN;
+        font-family: 'Cutive Mono', cursive;
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+}
