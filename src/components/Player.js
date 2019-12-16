@@ -22,7 +22,7 @@ const Player = props => {
       classes = className('player-main', 'gray')  
   }
   return (
-    <div className={currentPlayer === true && 'player-current'}> 
+    <div className={currentPlayer === true ? 'player-current' : ''}> 
       <div style={style} className={classes}>
         <span>{text}</span>
       </div>
