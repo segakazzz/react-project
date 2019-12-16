@@ -1,20 +1,33 @@
 import React from 'react'
 import { DARK, LIGHT } from '../constants'
 import '../scss/player.scss'
+import className from 'classnames'
 
 const Player = props => {
-  const { size, player, text } = props
-  const backgroundColor =
-    player === DARK ? 'black' : player === LIGHT ? 'white' : 'gray'
-  const color = player === LIGHT ? 'black' : player === DARK ? 'white' : 'gray'
+  const { size, player, text, currentPlayer} = props
   const style = {
     width: size,
     height: size,
-    backgroundColor: backgroundColor,
-    color: color,
     margin: size * 0.1
   }
-  return <div style={style} className={'player-main'}><span>{text}</span></div>
+  let classes = ''
+  switch(player){
+    case DARK:
+      classes = className('player-main', 'black')
+      break;
+    case LIGHT:
+      classes = className('player-main', 'white')
+      break;
+    default:
+      classes = className('player-main', 'gray')  
+  }
+  return (
+    <div className={currentPlayer === true && 'player-current'}> 
+      <div style={style} className={classes}>
+        <span>{text}</span>
+      </div>
+    </div>
+  )
 }
 
 export default Player

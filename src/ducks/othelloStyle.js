@@ -7,8 +7,9 @@ const calcCellSize = (areaWidth, areaHeight) => {
 const initialAreaSize = {
   width: typeof window === 'object' ? window.innerWidth : 500,
   height:
-    typeof window === 'object' ? window.innerHeight - NAVBAR_HEIGHT_PX : 500
+    typeof window === 'object' ? window.innerHeight - (NAVBAR_HEIGHT_PX * 2) : 500
 }
+
 const initialState = {
   gameAreaWidth: initialAreaSize.width,
   gameAreaHeight: initialAreaSize.height,
@@ -29,7 +30,7 @@ export default (state = initialState, action) => {
   console.log(action.type)
   switch (action.type) {
     case SCREEN_RESIZE:
-      const gameAreaHeight = action.screenHeight - NAVBAR_HEIGHT_PX
+      const gameAreaHeight = action.screenHeight - (NAVBAR_HEIGHT_PX * 2)
       const gameAreaWidth = action.screenWidth
       return Object.assign({}, state, {
         gameAreaWidth: gameAreaWidth,

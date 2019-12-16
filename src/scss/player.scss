@@ -7,4 +7,24 @@
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+
+    &.black{
+        background-color: black;
+        color: white;
+    }
+
+    &.white{
+        background-color: white;
+        color: black;
+
+    }
+
+    &.gray{
+        background-color: gray;
+        color: gray;
+    }
+}
+
+.player-current{
+    border-bottom: 4px solid red;
 }

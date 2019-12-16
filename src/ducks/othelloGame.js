@@ -23,7 +23,8 @@ const initialState = {
   positions: getInitialPositions(),
   player: DARK,
   darkCount: 2,
-  lightCount: 2
+  lightCount: 2,
+  message: null
 }
 
 const BreakException = {}
@@ -252,6 +253,7 @@ export default (state = initialState, action) => {
   switch (type) {
     case PUT_A_PIECE:
       const { row, col } = action
+      newState.message = null
       newState.positions = newState.positions.map(obj => ({...obj, isPlaced: false, isFlipped: false}))
       // check if the position is allowed
       if (isAllowed(row, col, newState.positions, newState.isCompleted)) {
@@ -261,7 +263,7 @@ export default (state = initialState, action) => {
         newState.player = !newState.player
         updateStatus(newState)
       } else {
-        // console.log('not allowed', row, col)
+        newState.message = 'The position is not allowed. Try again.'
       }
       break
 

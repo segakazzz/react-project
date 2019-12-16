@@ -23,8 +23,7 @@ const CoverPage = props => {
         Click HERE to start Game!
       </Button>
       <div className={'cover-information'}>
-        Created by 
-        <a href="https://segakazzz-portfolio.herokuapp.com/" 
+        Created by <a href="https://segakazzz-portfolio.herokuapp.com/" 
         target="_blank" rel="noopener noreferrer">Kazue Sega Sasatani</a>
       </div>
     </div>

@@ -18,4 +18,26 @@
         font-size: 0.9rem;
         font-weight: bold;
     }
+    .button-login{
+        font-family: 'Cutive Mono', cursive;
+    }
+}
+
+.navbar-sub{
+    position: absolute;
+    top: $NAVBAR_HEIGHT_PX;
+    height: $NAVBAR_HEIGHT_PX;
+    background-color: $MEDIUM_PINK;
+    .score{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Cutive Mono', cursive;   
+    }
+    .vs{
+        font-size: 1.5rem;
+        margin: 5px;
+        font-family: 'Cutive Mono', cursive;
+    }
 }
