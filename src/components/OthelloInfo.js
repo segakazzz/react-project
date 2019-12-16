@@ -22,7 +22,7 @@ const NavBarMain = props => {
   )
 }
 const NavBarSub = props => {
-  console.log(props)
+  // console.log(props)
   return (
     <Navbar className={'navbar-sub'}>
       <Navbar.Brand className={'navbar-scoreboard'}>
