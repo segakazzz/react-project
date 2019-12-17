@@ -8,6 +8,7 @@ import { NOT_STARTED } from '../constants'
 import classNames from 'classnames'
 
 const CoverPage = props => {
+  console.log(props)
   const classes = props.status === NOT_STARTED ? classNames('cover-main', 'show') : classNames('cover-main', 'hidden')
   return (
     <div className={classes}>

@@ -17,6 +17,7 @@ const OthelloCell = props => {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  // console.log(ownProps)
   const { positions } = state.othelloGame
   const { cellSize } = state.othelloStyle
   const { col, row } = ownProps

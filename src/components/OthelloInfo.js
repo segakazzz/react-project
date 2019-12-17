@@ -2,7 +2,6 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar, Button } from 'react-bootstrap'
 import '../scss/navbar.scss'
-import { connect } from 'react-redux'
 import Player from './Player'
 import { DARK, LIGHT } from '../constants'
 
@@ -47,14 +46,4 @@ const OthelloInfo = props => {
   )
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return { ...state.othelloGame }
-}
-
-//   const mapDispatchToProps = dispatch => {
-//     return {
-//       putPiece: (row, col) => dispatch(putPiece(row, col))
-//     }
-//   }
-
-export default connect(mapStateToProps, null)(OthelloInfo)
+export default OthelloInfo

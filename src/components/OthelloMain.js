@@ -20,9 +20,9 @@ class OthelloMain extends React.Component {
     const { isCompleted } = this.props
     return (
       <div className={className('othello-main', 'show')}>
-        <OthelloInfo />
-        <OthelloBoard />
-        {isCompleted && <OthelloModal />}
+        <OthelloInfo  {...this.props}/>
+        <OthelloBoard {...this.props} />
+        {isCompleted && <OthelloModal {...this.props}/>}
       </div>
     )
   }
@@ -34,12 +34,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { isCompleted } = state.othelloGame
-  return { isCompleted: isCompleted }
-}
+// const mapStateToProps = (state, ownProps) => {
+//   const { isCompleted } = state.othelloGame
+//   return { isCompleted: isCompleted }
+// }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(OthelloMain)

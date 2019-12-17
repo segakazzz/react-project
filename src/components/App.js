@@ -1,23 +1,18 @@
 import React from 'react'
-import OthelloMain from './OthelloMain'
-import CoverPage from './CoverPage'
-import { connect } from 'react-redux'
-// import { BrowserRouter as Router } from 'react-router-dom';
-// import Test from './Test'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import SignUp from './SignUp'
+import Home from './Home'
 
 const App = props => {
-  return (
-    <div>
-      {/* <Test/> */}
-      <CoverPage status={props.status}/>
-      <OthelloMain />
-    </div>
-  )
+  return <Router>
+    <Route exact path='/' component={Home} />
+      <Route path='/signup' component={SignUp} />
+      {/* <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+      <Route path={ROUTES.HOME} component={HomePage} />
+      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+      <Route path={ROUTES.ADMIN} component={AdminPage} /> */}
+  </Router>
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const { status } = state.othelloGame
-  return { status: status }
-}
-
-export default connect(mapStateToProps, null)(App)
+export default App

@@ -33,10 +33,9 @@ const OthelloBoard = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { player } = state.othelloGame
   const { gameAreaWidth, gameAreaHeight } = state.othelloStyle
   // console.log({ gameAreaWidth, gameAreaHeight })
-  return { player: player, areaWidth: gameAreaWidth, areaHeight: gameAreaHeight }
+  return { areaWidth: gameAreaWidth, areaHeight: gameAreaHeight, ...ownProps }
 }
 
 export default connect(

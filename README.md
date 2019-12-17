@@ -32,7 +32,7 @@ Othello/Reversi is a strategy board game for two players, played on an 8×8 unch
 | 2 | PUT_A_PIECE | othelloGame  | Put a new disc on the board and flip discs |
 | 3 | CLOSE_MODAL | othelloGame | Close modal that opens when the game is finished |
 | 4 | PLAY_AGAIN | othelloGame  | Restart othello game after one game is done|
-| 5 | SCREEN_RESIZE | othelloStyle | Triggered when the screen is resized. Calculate board and cell size to adjust. |
+| 5 | SCREEN_RESIZE | othelloStyle | Triggered when the screen is resized. Calculate board size and cell size and adjust them. |
 
 ### Initial State
 #### 1. othelloGame
