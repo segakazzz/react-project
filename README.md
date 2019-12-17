@@ -1,68 +1,90 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created for Phase 3 React project in Digitalcrafts. [Project Requirements](https://github.com/oakmac/phase3-react-project-requirements)
 
-## Available Scripts
+## URL 
+https://othello-game-react.firebaseapp.com/
 
-In the project directory, you can run:
+## Created By
+[Kazue Sasatani](http://www.segakazue.com)
 
-### `yarn start`
+## What is Othello/Reversi?
+Othello/Reversi is a strategy board game for two players, played on an 8×8 uncheckered board. There are sixty-four identical game pieces called disks (often spelled "discs"), which are light on one side and dark on the other. Players take turns placing disks on the board with their assigned color facing up. During a play, any disks of the opponent's color that are in a straight line and bounded by the disk just placed and another disk of the current player's color are turned over to the current player's color. [Wikipedia](https://en.wikipedia.org/wiki/Reversi)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How to Play Othello/Reversi
+[![How to Play Othello](https://img.youtube.com/vi/Ol3Id7xYsY4/0.jpg)](https://www.youtube.com/watch?v=Ol3Id7xYsY4 "How to Play Othello")
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Technologies/Libraries
+|　Name　| Usage | 
+|:--|:--|
+| [create-react-app](https://create-react-app.dev/docs/getting-started/) | A tool that gives you a massive head start when building React apps | 
+| [react](https://reactjs.org/) | Web Framework |
+| [redux](https://redux.js.org/) | State management |
+| [react-redux](https://react-redux.js.org/) | Connecting redux state management to react |
+| [react-router-dom](https://reacttraining.com/react-router/web/guides/quick-start) | URL routing |
+| [react-bootstrap](https://react-bootstrap.github.io/) | UI design |
+| [firebase](https://firebase.google.com/) | Hosting, Authentication and Database |
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## React-Redux
+### Actions 
+|　#　| Name | Reducer | Description | 
+|:--|:--|:--|:--|
+| 1 | START_GAME | othelloGame | Start a new othello game |
+| 2 | PUT_A_PIECE | othelloGame  | Put a new disc on the board and flip discs |
+| 3 | CLOSE_MODAL | othelloGame | Close modal that opens when the game is finished |
+| 4 | PLAY_AGAIN | othelloGame  | Restart othello game after one game is done|
+| 5 | SCREEN_RESIZE | othelloStyle | Triggered when the screen is resized. Calculate board and cell size to adjust. |
 
-### `yarn build`
+### Initial State
+#### 1. othelloGame
+~~~js
+const getInitialPositions = () => {
+  const initialPositions = [
+    { row: 3, col: 3, color: LIGHT, isFlipped: false, isPlaced: false },
+    { row: 3, col: 4, color: DARK, isFlipped: false, isPlaced: false },
+    { row: 4, col: 3, color: DARK, isFlipped: false, isPlaced: false },
+    { row: 4, col: 4, color: LIGHT, isFlipped: false, isPlaced: false }
+  ]
+  return JSON.parse(JSON.stringify(initialPositions))
+}
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+const initialState = {
+  status: NOT_STARTED,
+  isCompleted: false,
+  showModal: false,
+  positions: getInitialPositions(),
+  player: DARK,
+  darkCount: 2,
+  lightCount: 2,
+  message: null
+}
+~~~
+#### 2. othelloStyle
+~~~js
+const calcCellSize = (areaWidth, areaHeight) => {
+  return Math.min(areaWidth, areaHeight) * 0.9 / 8
+}
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+const initialAreaSize = {
+  width: typeof window === 'object' ? window.innerWidth : 500,
+  height:
+    typeof window === 'object' ? window.innerHeight - (NAVBAR_HEIGHT_PX * 2) : 500
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const initialState = {
+  gameAreaWidth: initialAreaSize.width,
+  gameAreaHeight: initialAreaSize.height,
+  cellSize: calcCellSize(initialAreaSize.width, initialAreaSize.height)
+}
+~~~
 
-### `yarn eject`
+### React Components 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Difficulties
+* Make a logic to flip discs. Especially diagonal direction. 
+* Board and cell size adjustment for different media and resizing screen
+* Firebase authentication and database connection. I'm still working on...
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## References
+* [What is Redux Ducks?](https://medium.com/@matthew.holman/what-is-redux-ducks-46bcb1ad04b7)
+* [A Firebase in React Tutorial for Beginners](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
