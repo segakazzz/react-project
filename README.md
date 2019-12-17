@@ -10,6 +10,7 @@ https://othello-game-react.firebaseapp.com/
 Othello/Reversi is a strategy board game for two players, played on an 8×8 uncheckered board. There are sixty-four identical game pieces called disks (often spelled "discs"), which are light on one side and dark on the other. Players take turns placing disks on the board with their assigned color facing up. During a play, any disks of the opponent's color that are in a straight line and bounded by the disk just placed and another disk of the current player's color are turned over to the current player's color. [Wikipedia](https://en.wikipedia.org/wiki/Reversi)
 
 ## How to Play Othello/Reversi
+* Link to Youtube video
 [![How to Play Othello](https://img.youtube.com/vi/Ol3Id7xYsY4/0.jpg)](https://www.youtube.com/watch?v=Ol3Id7xYsY4 "How to Play Othello")
 
 ## Technologies/Libraries
