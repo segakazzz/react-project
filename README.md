@@ -103,3 +103,8 @@ const initialState = {
 ## References
 * [What is Redux Ducks?](https://medium.com/@matthew.holman/what-is-redux-ducks-46bcb1ad04b7)
 * [A Firebase in React Tutorial for Beginners](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
+
+## Future Enhancement 
+* Login and save results in database
+* Have a Virtual Player to play alone
+* Increase board size from 8x8 to 10x10 or 12x12. Not sure if it's interesting. 
