@@ -79,6 +79,20 @@ const initialState = {
 
 ### React Components 
 
+|　#　| Name | Usage | Stateful? |
+|:--|:--|:--|:--| 
+| 1 | CoverPage | For cover page | No |
+| 2 | OthelloBoard | For othello board| No |
+| 3 | OthelloGridRow | For rows of othello board | No |
+| 4 | OthelloGridCol | For columns of othello board | No |
+| 5 | OthelloCell | For cells of othello board | No |
+| 6 | OthelloDisc | For discs on othello board | No |
+| 7 | OthelloDisc | For discs on othello board | No |
+| 8 | OthelloMain | For othello game page | Yes |
+| 9 | OthelloModal | For modal which opens when the game is finished | No |
+| 10 | Player | Signs or players | No |
+
+
 ## Difficulties
 * Make a logic to flip discs. Especially diagonal direction. 
 * Board and cell size adjustment for different media and resizing screen
