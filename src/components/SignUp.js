@@ -1,12 +1,12 @@
 import React from 'react'
-import { FirebaseContext } from './Firebase'
+// import { FirebaseContext } from './Firebase'
+import { Link } from 'react-router-dom'
+import { withFirebase } from './Firebase'
 
 const SignUp = () => (
   <div>
     <h1>SignUp</h1>
-    <FirebaseContext.Consumer>
-      {firebase => <SignUpForm firebase={firebase} />}
-    </FirebaseContext.Consumer>
+    <SignUpForm />
   </div>
 )
 
@@ -18,7 +18,7 @@ const INITIAL_STATE = {
   error: null
 }
 
-class SignUpForm extends React.Component {
+class SignUpFormBase extends React.Component {
   constructor (props) {
     super(props)
     this.state = { ...INITIAL_STATE }
@@ -26,7 +26,7 @@ class SignUpForm extends React.Component {
   }
   onSubmit = event => {
     event.preventDefault()
-    const { username, email, passwordOne } = this.state
+    const { email, passwordOne } = this.state
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
@@ -87,4 +87,14 @@ class SignUpForm extends React.Component {
   }
 }
 
+const SignUpForm = withFirebase(SignUpFormBase)
+
+const SignUpLink = () => (
+  <p>
+    Don't have an account? <Link to={"/signup"}>Sign Up</Link>
+  </p>
+);
+
+
 export default SignUp
+export { SignUpForm, SignUpLink }
