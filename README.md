@@ -98,7 +98,7 @@ const initialState = {
 
 ## Difficulties
 * Make a logic to flip discs. Especially diagonal direction. 
-* Board and cell size adjustment for different media and resizing screen
+* Board and cell size adjustment for different media i.e desktop, mobile, tablet.
 * Firebase authentication and database connection. I'm still working on...
 
 
