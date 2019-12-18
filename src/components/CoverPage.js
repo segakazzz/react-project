@@ -6,6 +6,8 @@ import { startGame } from '../ducks/othelloGame'
 import '../scss/cover.scss'
 import { NOT_STARTED } from '../constants'
 import classNames from 'classnames'
+import { faGithubSquare } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const CoverPage = props => {
   // console.log(props)
@@ -26,6 +28,12 @@ const CoverPage = props => {
       <div className={'cover-information'}>
         Created by <a href="https://segakazzz-portfolio.herokuapp.com/" 
         target="_blank" rel="noopener noreferrer">Kazue Sega Sasatani</a>
+      </div>
+      <div className={'link2github'}>
+        <a href="https://github.com/segakazzz/react-project" target="_blank" 
+          rel="noopener noreferrer">
+         <FontAwesomeIcon icon={faGithubSquare} />
+        </a>
       </div>
     </div>
   )

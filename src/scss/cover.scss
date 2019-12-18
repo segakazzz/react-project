@@ -33,10 +33,23 @@
     font-family: 'Cutive Mono', cursive;
     font-size: 1.2rem;
     text-align: center;
-    margin: 20px
+    margin: 20px;
+    a {
+        color: $DARK_PINK;
+        text-decoration: none;
+    }
 }
 
 .cover-button {
     font-family: 'Cutive Mono', cursive;
     font-size: 1rem;
+}
+
+.link2github{
+    color: $DARK_PINK;
+    font-size: 5rem;
+    a {
+        color: $DARK_PINK;
+        text-decoration: none;
+    }
 }
