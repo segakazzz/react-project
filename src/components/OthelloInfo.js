@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Navbar, Button } from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
 import '../scss/navbar.scss'
 import Player from './Player'
 import { DARK, LIGHT } from '../constants'
@@ -14,7 +14,7 @@ const NavBarMain = props => {
       <Navbar.Toggle />
       {!props.isCompleted && (
         <Navbar.Collapse className='justify-content-end'>
-          <Button variant='secondary' className={'button-login'}>Login</Button>
+          {/* <Button variant='secondary' className={'button-login'}>Login</Button> */}
         </Navbar.Collapse>
       )}
     </Navbar>

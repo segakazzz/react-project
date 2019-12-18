@@ -37,9 +37,9 @@ const OthelloModal = props => {
         <Button variant='outline-secondary' onClick={props.playAgain}>
           Play Again
         </Button>
-        <Button variant='outline-primary' onClick={props.closeModal}>
+        {/* <Button variant='outline-primary' onClick={props.closeModal}>
           Save Result
-        </Button>
+        </Button> */}
       </Modal.Footer>
     </Modal>
   )
